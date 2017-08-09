@@ -1,17 +1,15 @@
 ---
-title: ½É·Ñ±íÇåÍËtop3
+title: ç¼´è´¹è¡¨æ¸…é€€top3
 create: 2017.08.07
 ---
 
-[TOC]
-
-# bss´¦Àí
-    ¸÷Óò£º
+# bsså¤„ç†
+    å„åŸŸï¼š
     exec p_top3_paylog_bss
 
-## µ¼³ö½á¹ûµ½excel
+## å¯¼å‡ºç»“æœåˆ°excel
 ```sql
---×ªÕË
+--è½¬è´¦
 select b.area_name, a.eparchy_code,recv_staff_id,sum_fee,cnt
 from(select 'act1' db,ta.* from uop_act1.jinl_paylog_recvfee@UQRY_SEL_TO_HAACTDB11 ta
         union all select 'act2' db,ta.* from uop_act2.jinl_paylog_recvfee@UQRY_SEL_TO_HAACTDB11 ta
@@ -24,7 +22,7 @@ and partition_id = to_number(to_char(add_months(SYSDATE, -1), 'mm')) --4
 and payment_id <> 100014
 order by a.eparchy_code;
 
---ÇåÍË
+--æ¸…é€€
 select b.area_name, a.eparchy_code,recv_staff_id,sum_fee,cnt
 from(select 'act1' db,ta.* from uop_act1.jinl_paylog_recvfee@UQRY_SEL_TO_HAACTDB11 ta
         union all select 'act2' db,ta.* from uop_act2.jinl_paylog_recvfee@UQRY_SEL_TO_HAACTDB11 ta
@@ -38,12 +36,12 @@ and payment_id <> 100014
 order by a.eparchy_code;
 ```
 
-# cbss´¦Àí
-  ¿ÉÔÚuop_act1ÏÂ»òyl_act_it5ÏÂÖ´ĞĞ¾ù¿É
+# cbsså¤„ç†
+  å¯åœ¨uop_act1ä¸‹æˆ–yl_act_it5ä¸‹æ‰§è¡Œå‡å¯
 
-## uop_act1ÏÂ
+## uop_act1ä¸‹
 ```sql
---uop_act1ÓòÖ´ĞĞ
+--uop_act1åŸŸæ‰§è¡Œ
 BEGIN
     DELETE jinl_paylog_recvfee_cbss
      WHERE partition_id = to_number(to_char(add_months(SYSDATE, -1), 'mm'));
@@ -51,7 +49,7 @@ BEGIN
     FOR rec IN (SELECT *
                   FROM td_m_area
                  WHERE area_level = 20) LOOP
-        --×ªÕË
+        --è½¬è´¦
         INSERT INTO jinl_paylog_recvfee_cbss
             SELECT to_number(to_char(add_months(SYSDATE, -1), 'mm')), eparchy_code,
                    recv_staff_id, fee, cnt, 100016
@@ -69,7 +67,7 @@ BEGIN
                       ORDER BY COUNT(*) DESC)
              WHERE rownum < 4;
     
-        --ÇåÍË
+        --æ¸…é€€
         INSERT INTO jinl_paylog_recvfee_cbss
             SELECT to_number(to_char(add_months(SYSDATE, -1), 'mm')), eparchy_code,
                    recv_staff_id, fee, cnt, 100014
@@ -80,7 +78,7 @@ BEGIN
                         AND recv_staff_id NOT IN
                             ('SYSUSER ', 'SYSUSER', 'SF_BADFEE', 'SF_TRANS', 'GJM0305','Z000DZQD')
                         AND payment_id = '100014'
-                        AND nvl(remark, '0') NOT IN ('ÆÕÍ¨Ô¤´æ¿î×ªºÏÔ¼Ô¤´æ¿îÒµÎñµÄÔ¤´æÇåÍË')
+                        AND nvl(remark, '0') NOT IN ('æ™®é€šé¢„å­˜æ¬¾è½¬åˆçº¦é¢„å­˜æ¬¾ä¸šåŠ¡çš„é¢„å­˜æ¸…é€€')
                         AND eparchy_code = rec.area_code
                         AND recv_time > trunc(add_months(SYSDATE, -1), 'mm')
                       GROUP BY eparchy_code, recv_staff_id
@@ -94,7 +92,7 @@ END;
 ```
 
 
-## yl_act_it5ÏÂ
+## yl_act_it5ä¸‹
 
 ```sql
 --yl_act_it5
@@ -105,7 +103,7 @@ BEGIN
     FOR rec IN (SELECT *
                   FROM ucr_param.td_m_area
                  WHERE area_level = 20 and province_code = '76') LOOP
-        --×ªÕË
+        --è½¬è´¦
         INSERT INTO jinl_paylog_recvfee_cbss
             SELECT to_number(to_char(add_months(SYSDATE, -1), 'mm')), eparchy_code,
                    recv_staff_id, fee, cnt, 100016
@@ -123,7 +121,7 @@ BEGIN
                       ORDER BY COUNT(*) DESC)
              WHERE rownum < 4;
     
-        --ÇåÍË
+        --æ¸…é€€
         INSERT INTO jinl_paylog_recvfee_cbss
             SELECT to_number(to_char(add_months(SYSDATE, -1), 'mm')), eparchy_code,
                    recv_staff_id, fee, cnt, 100014
@@ -135,7 +133,7 @@ BEGIN
                             ('SYSUSER ', 'SYSUSER', 'SF_BADFEE', 'SF_TRANS', 'GJM0305',
                              'Z000DZQD')
                         AND payment_id = '100014'
-                        AND nvl(remark, '0') NOT IN ('ÆÕÍ¨Ô¤´æ¿î×ªºÏÔ¼Ô¤´æ¿îÒµÎñµÄÔ¤´æÇåÍË')
+                        AND nvl(remark, '0') NOT IN ('æ™®é€šé¢„å­˜æ¬¾è½¬åˆçº¦é¢„å­˜æ¬¾ä¸šåŠ¡çš„é¢„å­˜æ¸…é€€')
                         AND eparchy_code = rec.area_code
                         AND recv_time > trunc(add_months(SYSDATE, -1), 'mm')
                       GROUP BY eparchy_code, recv_staff_id
@@ -147,11 +145,11 @@ END;
 /
 ```
 
-## µ¼³ö½á¹ûµ½excel
-### uop_act1ÏÂ
+## å¯¼å‡ºç»“æœåˆ°excel
+### uop_act1ä¸‹
 
 ```sql
---×ªÕË
+--è½¬è´¦
 select b.area_name, a.eparchy_code,recv_staff_id,sum_fee,cnt
 from(select 'act1' db,ta.* from uop_act1.jinl_paylog_recvfee_cbss@UQRY_SEL_TO_HAACTDB11 ta) a,
         ucr_param.td_m_area b
@@ -161,7 +159,7 @@ and partition_id = to_number(to_char(add_months(SYSDATE, -1), 'mm')) --4
 and payment_id <> 100014
 order by a.eparchy_code,cnt desc;
 
---ÇåÍË
+--æ¸…é€€
 select b.area_name, a.eparchy_code,recv_staff_id,sum_fee,cnt
 from(select 'act1' db,ta.* from uop_act1.jinl_paylog_recvfee_cbss@UQRY_SEL_TO_HAACTDB11 ta) a,
         ucr_param.td_m_area b
@@ -172,9 +170,9 @@ and payment_id = 100014
 order by a.eparchy_code,cnt desc;
 ```
 
-### yl_act_it5ÏÂ
+### yl_act_it5ä¸‹
 ```sql
---×ªÕË
+--è½¬è´¦
 SELECT b.area_name, a.eparchy_code, recv_staff_id, sum_fee, cnt
   FROM (SELECT 'act1' db, ta.*
            FROM jinl_paylog_recvfee_cbss ta) a,
@@ -185,7 +183,7 @@ SELECT b.area_name, a.eparchy_code, recv_staff_id, sum_fee, cnt
    AND payment_id <> 100014
  ORDER BY a.eparchy_code, cnt DESC;
 
---ÇåÍË
+--æ¸…é€€
 SELECT b.area_name, a.eparchy_code, recv_staff_id, sum_fee, cnt
   FROM (SELECT 'act1' db, ta.*
            FROM jinl_paylog_recvfee_cbss ta) a,
@@ -197,5 +195,5 @@ SELECT b.area_name, a.eparchy_code, recv_staff_id, sum_fee, cnt
  ORDER BY a.eparchy_code, cnt DESC;
 ```
 
-# ·¢ËÍÓÊ¼ş
-    °×ÒøÃ÷, ÀîÑŞÁá, ÄşÎ°·æ, ÀîÑÇÌÎ, ĞÏË§Ææ
+# å‘é€é‚®ä»¶
+    ç™½é“¶æ˜, æè‰³ç², å®ä¼Ÿé”‹, æäºšæ¶›, é‚¢å¸…å¥‡
