@@ -1,22 +1,23 @@
 ## 登网判断-cbss串号监控
 
-> sql脚本均在kfk-act库yl_act_it5下执行
+> sql脚本均在kfk-act库yl\_act\_it5下执行  
 > shell脚本均在drecv1用户目录~/cbssup目录下执行
 
-
 ## cbss串号监控
+
 > cbss串号监控，匹配前14位
 
-|说明|名称|
-|:---------:|:---------------------------------:|------|
-|处理脚本 |run_cbpurchase.sh|***月低手动执行***|
-|匹配过程 |p_cbss_purchase_monitoring||
-|表       |up_Tf_f_User_Purchase_monitor||
-|上传表   |cb_Tf_fh_User_Purchase_monitor||
+|  | 说明 | 名称 |
+| :---: | :--- | :--- |
+| 处理脚本 | run\_cbpurchase.sh | _**月低手动执行**_ |
+| 匹配过程 | p\_cbss\_purchase\_monitoring |  |
+| 表 | up\_Tf\_f\_User\_Purchase\_monitor |  |
+| 上传表 | cb\_Tf\_fh\_User\_Purchase\_monitor |  |
 
-####处理步聚
+#### 处理步聚
 
 1.核查处理结果
+
 ```sql
 --查看处理情况
 select act_type,count(1) 
@@ -41,18 +42,18 @@ BEGIN
         v_pre_cycle_id  := To_char(add_months(SYSDATE, -1), 'yyyymm');
         v_month6 := trunc(add_months(sysdate,-5),'mm');
     end if;
-    
+
     dbms_output.put_line('v_curr_cycle_id' || v_curr_cycle_id);
     dbms_output.put_line('v_pre_cycle_id' || v_pre_cycle_id);
     delete up_Tf_f_User_Purchase_monitor 
     where cycle_id = v_curr_cycle_id;
-    
+
     FOR r IN (SELECT ROWID, a.*
                 FROM Tf_f_User_Purchase_monitor a
                WHERE cycle_id = v_curr_cycle_id
                 AND start_date > v_month6) LOOP
         BEGIN
-        
+
             SELECT 1, act_type
               INTO v_pre_cnt, v_pre_act_type
               FROM cb_Tf_fh_User_Purchase_monitor
@@ -84,16 +85,19 @@ BEGIN
                   FROM Tf_f_User_Purchase_monitor
                  WHERE ROWID = r.rowid;
         END IF;
-    
+
     END LOOP;
     COMMIT;
 END;
 /
 ```
+
 ```sql
 --查看上传情况
 Select act_type,Count(1) 
 From up_Tf_f_User_Purchase_monitor 
 group by act_type;
-
 ```
+
+
+
