@@ -4,7 +4,7 @@
 * [出账脚本](outbill/README.md)
     * [1号-凌晨脚本        ](outbill/1号-凌晨脚本.md)
     * [1号-修改为50进程    ](outbill/1号-修改为50进程.md)
-    * [1号-转兑稽核        ](outbill/1号-1号-转兑稽核.md)
+    * [1号-转兑稽核        ](outbill/1号-转兑稽核.md)
 * [登网判断](login/README.md)
     * [月低-登网往月数据备份](login/月低-登网往月数据备份.md)
     * [月低-cbss串号监控   ](login/月低-cbss串号监控.md)
