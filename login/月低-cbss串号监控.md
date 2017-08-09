@@ -10,9 +10,9 @@
 |说明|名称|
 |:---------:|:---------------------------------:|------|
 |处理脚本 |run_cbpurchase.sh|***月低手动执行***|
-|匹配过程 |p_cbss_purchase_monitoring|
-|表       |up_Tf_f_User_Purchase_monitor|
-|上传表   |cb_Tf_fh_User_Purchase_monitor|
+|匹配过程 |p_cbss_purchase_monitoring||
+|表       |up_Tf_f_User_Purchase_monitor||
+|上传表   |cb_Tf_fh_User_Purchase_monitor||
 
 ####处理步聚
 
