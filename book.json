@@ -1,6 +1,7 @@
 {  
 	"title": "出账任务",
 	"author": "lvjl",
+	"gitbook": "3.2.3",
 	"plugins": [
 		"page-treeview"
 	],
