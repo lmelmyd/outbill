@@ -1,36 +1,54 @@
 ```sh
+# 每天续存活动转兑
 0 20 * * * /drecvdata/drecv1/cz_sh/main_action.sh
+# 赠送清退处理
 00 22 * * * /drecvdata/drecv1/cz_sh/present.sh
+# cbss宽带提醒
 0 19 6-31 * * /drecvdata/drecv1/remind_adsl/run_un_cbss_sttx.sh
+# bss宽带提醒 
 30 19 6-31 * * /drecvdata/drecv1/remind_adsl/run_un_tx_act.sh
+# kfk任务
 1 21,22,23 5 * * /drecvdata/drecv1/remind_adsl/run_kfk_task.sh
+# 宽带专款续存日志提取
 30 0 * * * /drecvdata/drecv1/remind_adsl/run_broadand_paylog.sh
 #00 10 10,20 * * /drecvdata/drecv1/remind_adsl/run_send_sms.sh
+# 短信提醒
 00 9 10,20 * * /drecvdata/drecv1/remind_adsl/run_send_sms_new.sh
 #30 2 10-31 * * /drecvdata/drecv1/remind_adsl/csts_proc.sh
+# kpi值上传
 40 1 * * * /drecvdata/drecv1/kpi/kpivalue.sh
+# 信控日志分析
 30 5 * * * /drecvdata/drecv1/chk_log/analyse_credit/m_analyse.sh
 #0,15,30,45 * * * * /drecvdata/drecv1/cz_sh/4g_smart.sh
 
-#sap_total
+#sap_total 沃受理数据沉锭
 30 7 * * * /drecvdata/drecv1/cz_sh/run_sap_total.sh
 
 #sp
+# sp数据备份
 05 18 18 * * /drecvdata/drecv1/cz_sh/sp_bakuser.sh
+# sp本月用户获取
 10 18 19 * * /drecvdata/drecv1/cz_sh/sp_getuser.sh
+# sp本月数据处理
 10 18,23,3 20,22,24 * * /drecvdata/drecv1/cz_sh/sp_detail_mob11.sh
+# sp本月数据处理
 10 18 21,23,25 * * /drecvdata/drecv1/cz_sh/sp_detail_mob12.sh
 
 #adsl
+# 宽带资费到期续期处理
 10 18 21 * * /drecvdata/drecv1/cz_sh/run_adsl_0_3_g.sh
+# 宽带资费 月低检查处理
 00 19 29,30,31 * * /drecvdata/drecv1/cz_sh/run_adsl_chk.sh
 #smart -c40004000
 30 17 * * * /drecvdata/drecv1/bin/smart_evehour.sh >> /drecvdata/drecv1/bin/smart_evehour.log &
 
 #transfer
+# 月低提前转兑表清理
 0 18 27 * * /drecvdata/drecv1/cz_sh/run_before_trunc.sh
+# 月低提前转兑
 30 19 29,30 * * /drecvdata/drecv1/cz_sh/run_before_all.sh
 
+# 张明任务，不太清楚
 00 12 1 * * /drecvdata/drecv1/zm_bill/uop_act1_discnt.sh >/drecvdata/drecv1/zm_bill/uop_act1_discnt.log >&1
 00 12 1 * * /drecvdata/drecv1/zm_bill/uop_act2_discnt.sh >/drecvdata/drecv1/zm_bill/uop_act2_discnt.log >&1
 00 12 1 * * /drecvdata/drecv1/zm_bill/uop_act3_discnt.sh >/drecvdata/drecv1/zm_bill/uop_act3_discnt.log >&1
@@ -94,7 +112,9 @@
 0 6 1 * * /drecvdata/drecv1/zhaorz/shell/lowoweYugu/lowoweYuguCbss.sh >> /dev/null &
 
 
+# 宽带提醒文件推送与接收回执
 10 01 10-31 * * sh /drecvdata/drecv1/remind_adsl/netRemindRecIndb.sh > /dev/null &
+# 宽带提醒文件推送与接收回执
 10 01 1 * * sh /drecvdata/drecv1/remind_adsl/netRemindRecIndb.sh > /dev/null &
 
 1 0 * * 0 sh /drecvdata/drecv1/liyt/month/deposit/exec_deposit.sh > /dev/null &
@@ -110,7 +130,7 @@
 #0,15,30,45 7-21 * * * sh /drecvdata/drecv1/liyt/sms_deal/sh1.sh  > /dev/null &
 #30 8 * * * sh /drecvdata/drecv1/shellApp/daycheck/dayCheck.sh > /dev/null 
 
-#worelation
+#worelation 宽带(次月停处理4g1+1)
 30 19 6 * * /drecvdata/drecv1/cz_sh/run_worelation_month_stop.sh
 #drecv_monitor
 0 7,9,14,20 * * * /drecvdata/drecv1/drecv_script/drecv_monitor/drecv_monitor_daemon.sh >> /drecvdata/drecv1/drecv_script/drecv_monitor/drecv_monitor_daemon_1.log 2>&1
@@ -123,7 +143,7 @@
 #kafka discntshare   表同步
 #0 1 * * * sh /drecvdata/drecv1/liyt/month/kafka/get_share.sh
 0 0 * * * sh /drecvdata/drecv1/liyt/month/kafka/state_depositlimit.sh
-#zp
+#zp 专票费用提取
 10,20,30,40,50,0 * * * * /drecvdata/drecv1/cz_sh/run_zpbssfee.sh
 
 #bigacct state
