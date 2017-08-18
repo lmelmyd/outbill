@@ -1,14 +1,9 @@
 ```sh
 0 20 * * * /drecvdata/drecv1/cz_sh/main_action.sh
 00 22 * * * /drecvdata/drecv1/cz_sh/present.sh
-#30 19 * * * /drecvdata/drecv1/remind_adsl/run_warn_tx.sh
-#40 19 6-31 * * /drecvdata/drecv1/remind_adsl/run_bss_st.sh
-#50 19 6-31 * * /drecvdata/drecv1/remind_adsl/run_kfk_cbss_st_tx_chk.sh
 0 19 6-31 * * /drecvdata/drecv1/remind_adsl/run_un_cbss_sttx.sh
 30 19 6-31 * * /drecvdata/drecv1/remind_adsl/run_un_tx_act.sh
 1 21,22,23 5 * * /drecvdata/drecv1/remind_adsl/run_kfk_task.sh
-#30 19 9-31 * * /drecvdata/drecv1/remind_adsl/run_cbss_tx_chk.sh
-#10 18 6 * * /drecvdata/drecv1/remind_adsl/run_jl_new.sh
 30 0 * * * /drecvdata/drecv1/remind_adsl/run_broadand_paylog.sh
 #00 10 10,20 * * /drecvdata/drecv1/remind_adsl/run_send_sms.sh
 00 9 10,20 * * /drecvdata/drecv1/remind_adsl/run_send_sms_new.sh
