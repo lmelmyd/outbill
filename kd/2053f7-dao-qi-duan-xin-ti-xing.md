@@ -10,11 +10,15 @@
     #无 *sms* 的为结束
 
 # 库内查看
-    --bss
+    --bss 4个域
     SELECT remark, COUNT(1)
       FROM Tf_f_Broad_Warn_New_sms
      WHERE update_day = to_char(SYSDATE - 1, 'yyyymmdd')
      GROUP BY remark;
-    --cbss查看
+    --cbss kfk 共享查看
+    SELECT remark, COUNT(1)
+      FROM cbss_broad_warn_new_sms
+     WHERE update_day = to_char(SYSDATE - 1, 'yyyymmdd')
+     GROUP BY remark;
+    --cbss kfk 组合查看
     
-   
