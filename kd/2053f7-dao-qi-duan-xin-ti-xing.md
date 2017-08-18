@@ -15,10 +15,15 @@
       FROM Tf_f_Broad_Warn_New_sms
      WHERE update_day = to_char(SYSDATE - 1, 'yyyymmdd')
      GROUP BY remark;
-    --cbss kfk 共享查看
+    --cbss kfk 组合查看
     SELECT remark, COUNT(1)
       FROM cbss_broad_warn_new_sms
      WHERE update_day = to_char(SYSDATE - 1, 'yyyymmdd')
      GROUP BY remark;
-    --cbss kfk 组合查看
-    
+    --cbss kfk 共享查看
+    SELECT remark, COUNT(1)
+      FROM ad_cbss_kddq_share_sms
+     WHERE update_day = to_char(SYSDATE - 1, 'yyyymmdd')
+     GROUP BY remark;
+ 
+ 
