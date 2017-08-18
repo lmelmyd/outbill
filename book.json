@@ -1,12 +1,6 @@
 {
 	"plugins": [
-		"-livereload",
-		"-search",
-		"-lunr",
-		"-sharing",
-		"-fontsettings",
-		"-highlight",
-		"-page-treeview"
+		"page-treeview"
 	],
 	"pluginsConfig": {
 		"page-treeview": {
