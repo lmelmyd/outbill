@@ -96,7 +96,7 @@ INSERT INTO ti_o_sms
                 AND remark = 'ok'
                 AND a.Update_Day = to_char(SYSDATE - 1, 'yyyymmdd')
                 AND a.Action_Code = tb.action_code);
---注意提醒
+--注意提交
 ```
 
 ## cbss发送
