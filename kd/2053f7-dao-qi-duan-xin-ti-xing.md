@@ -9,7 +9,7 @@
     ls ~/remind_adsl/*.ctl
     #无 *sms* 的为结束
 
-# 库内查看
+# 库内查看执行状态
     --bss 4个域
     SELECT remark, COUNT(1)
       FROM Tf_f_Broad_Warn_New_sms
@@ -25,5 +25,8 @@
       FROM ad_cbss_kddq_share_sms
      WHERE update_day = to_char(SYSDATE - 1, 'yyyymmdd')
      GROUP BY remark;
+ remark = "ok" 表示发送的数据量
+ 
+ # 发送短信
  
  
