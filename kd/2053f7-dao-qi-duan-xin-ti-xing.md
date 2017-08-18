@@ -30,6 +30,7 @@
  # 发送短信
  ## bss发送
  ```sql
+ --1，2，3，4域执行
  --id_tag='0'
  INSERT INTO ti_o_sms
     (sms_notice_id, eparchy_code, in_mode_code, sms_channel_code, recv_object_type,
@@ -98,4 +99,5 @@ INSERT INTO ti_o_sms
 --注意提醒
 ```
 
+## cbss发送
  
