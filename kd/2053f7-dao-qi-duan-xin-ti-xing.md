@@ -100,4 +100,9 @@ INSERT INTO ti_o_sms
 ```
 
 ## cbss发送
- 
+```sql
+--各域执行
+
+
+```
+
