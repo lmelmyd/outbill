@@ -132,7 +132,7 @@ INSERT INTO ti_o_sms
            '尊敬的客户，您好！随您手机号码一同办理的宽带业务（' || serial_number ||
             '），该账户剩余使用费预计将于1个月后使用完毕，为了不影响您的正常使用，请您及时到就近联通营业厅进行缴费，谢谢！', 1, 9999, SYSDATE,
            'CREDIT00', 'CREDI', '0', 2, 1, 1, to_date('20500101', 'yyyymmdd'), 'kd专款到期'
-      FROM yl_act_it5.cbss_broad_warn_new_sms a
+      FROM yl_act_it5.cbss_broad_warn_new_sms@TO_KFK_ACT a
      WHERE id_tag = '1'
        AND remark = 'ok'
        AND a.Update_Day = to_char(sysdate-1,'yyyymmdd')
@@ -150,7 +150,7 @@ INSERT INTO ti_o_sms
            '尊敬的客户，您好！随您手机号码一同办理的宽带业务（' || serial_number ||
             '），该账户剩余使用费预计将于2个月后使用完毕，为了不影响您的正常使用，请您及时到就近联通营业厅进行缴费，谢谢！', 1, 9999, SYSDATE,
            'CREDIT00', 'CREDI', '0', 2, 1, 1, to_date('20500101', 'yyyymmdd'), 'kd专款到期'
-      FROM yl_act_it5.cbss_broad_warn_new_sms a
+      FROM yl_act_it5.cbss_broad_warn_new_sms@TO_KFK_ACT a
      WHERE id_tag = '2'
        AND remark = 'ok'
        AND a.Update_Day = to_char(sysdate-1,'yyyymmdd')
@@ -160,7 +160,24 @@ INSERT INTO ti_o_sms
 
 
 --共享
-
+--短信
+INSERT INTO ti_o_sms
+    (sms_notice_id, eparchy_code, in_mode_code, sms_channel_code, recv_object_type,
+     recv_object, id, sms_type_code, sms_kind_code, notice_content_type, notice_content,
+     force_refer_count, sms_priority, refer_time, refer_staff_id, refer_depart_id,
+     deal_state, send_object_code, send_time_code, send_count_code, deal_time, revc4)
+    SELECT f_uip_getseqid('seq_smssend_id'), eparchy_code, '0', '28', '00', mobile_number,
+           mob_user_id, '01', '01', '0',
+           '尊敬的客户，您好！随您手机号码一同办理的宽带业务（' || ad_serial_number ||
+            '），该账户剩余使用费预计将于本月使用完毕，为了不影响您的正常使用，请您及时到就近联通营业厅进行缴费，谢谢！', 1, 9999, SYSDATE,
+           'CREDIT00', 'CREDI', '0', 2, 1, 1, to_date('20500101', 'yyyymmdd'), 'kd专款到期'
+      FROM yl_act_it5.ad_cbss_kddq_share_sms@TO_KFK_ACT a
+     WHERE id_tag = '0'
+       AND remark = 'ok'
+       AND a.Update_Day = to_char(sysdate-1,'yyyymmdd')
+       AND eparchy_code IN (SELECT eparchy_code
+                              FROM td_b_local_commpara
+                             WHERE para_attr = '14');
 
 ```
 
