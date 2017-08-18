@@ -32,4 +32,5 @@
   * [5号-微信账单推送    ](other/5号-微信账单推送.md)
 * [定时任务](dstask/README.md)
   * [crontab-drecv1](dstask/crontab.md)
+  * [crontab-drecv2](dstask/crontab-drecv2.md)
 
