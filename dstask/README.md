@@ -1,6 +1,3 @@
-# outbill
+# 定时任务
 
-出账任务和日常使用的脚本，学习gitbook
-
-
-
+主机crontab和gtm类账管类任务
