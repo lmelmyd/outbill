@@ -1,4 +1,6 @@
-{
+{  
+	"title": "出账任务",
+	"author": "lvjl",
 	"plugins": [
 		"page-treeview"
 	],
