@@ -4,10 +4,14 @@ create: 2017.08.07
 ---
 
 # bss处理
-    各域：
-    exec p_top3_paylog_bss
+
+```
+各域：
+exec p_top3_paylog_bss
+```
 
 ## 导出结果到excel
+
 ```sql
 --转账
 select b.area_name, a.eparchy_code,recv_staff_id,sum_fee,cnt
@@ -37,9 +41,11 @@ order by a.eparchy_code;
 ```
 
 # cbss处理
-  可在uop_act1下或yl_act_it5下执行均可
 
-## uop_act1下
+可在uop\_act1下或yl\_act\_it5下执行均可
+
+## uop\_act1下
+
 ```sql
 --uop_act1域执行
 BEGIN
@@ -66,7 +72,7 @@ BEGIN
                       GROUP BY eparchy_code, recv_staff_id
                       ORDER BY COUNT(*) DESC)
              WHERE rownum < 4;
-    
+
         --清退
         INSERT INTO jinl_paylog_recvfee_cbss
             SELECT to_number(to_char(add_months(SYSDATE, -1), 'mm')), eparchy_code,
@@ -88,11 +94,9 @@ BEGIN
     END LOOP;
 END;
 /
-
 ```
 
-
-## yl_act_it5下
+## yl\_act\_it5下
 
 ```sql
 --yl_act_it5
@@ -120,7 +124,7 @@ BEGIN
                       GROUP BY eparchy_code, recv_staff_id
                       ORDER BY COUNT(*) DESC)
              WHERE rownum < 4;
-    
+
         --清退
         INSERT INTO jinl_paylog_recvfee_cbss
             SELECT to_number(to_char(add_months(SYSDATE, -1), 'mm')), eparchy_code,
@@ -146,7 +150,8 @@ END;
 ```
 
 ## 导出结果到excel
-### uop_act1下
+
+### uop\_act1下
 
 ```sql
 --转账
@@ -170,7 +175,8 @@ and payment_id = 100014
 order by a.eparchy_code,cnt desc;
 ```
 
-### yl_act_it5下
+### yl\_act\_it5下
+
 ```sql
 --转账
 SELECT b.area_name, a.eparchy_code, recv_staff_id, sum_fee, cnt
@@ -196,4 +202,10 @@ SELECT b.area_name, a.eparchy_code, recv_staff_id, sum_fee, cnt
 ```
 
 # 发送邮件
-    白银明, 李艳玲, 宁伟锋, 李亚涛, 邢帅奇
+
+```
+白银明, 李艳玲, 宁伟锋, 李亚涛, 邢帅奇
+```
+
+
+
