@@ -1,4 +1,4 @@
-## 登网判断-近期登网判断
+## 登网判断-所以业务
 
 > sql脚本均在kfk-act库yl\_act\_it5下执行  
 > shell脚本均在drecv1用户目录~/cbssup目录下执行
