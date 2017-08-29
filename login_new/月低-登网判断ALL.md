@@ -30,11 +30,11 @@
 
 | 说明 | 名称 | 其它 |
 | :---: | :--- | :---: |
-| 处理脚本 | run\_loginpurchase.sh | 月低和1号执行 |
-| 匹配过程 | p\_login\_purchase\_monitoring |  |
-| 表 | JF\_login\_PURCHASE\_MONITORING |  |
-| 上传表 | up\_login\_purchase\_monitor |  |
-| 历史表 | uph\_login\_Purchase\_monitor |  |
+| 处理脚本 | run_loginpurchase_n.sh | 月低和1号执行 |
+| 匹配过程 | p_login_purchase_monitor_new |  |
+| 表 | JF_login_PURCHASE_MONITORING |  |
+| 上传表 | up_login_purchase_monitor |  |
+| 历史表 | uph_login_Purchase_monitor |  |
 
 #### 处理步聚
 
