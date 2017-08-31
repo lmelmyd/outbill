@@ -56,15 +56,15 @@ where month_id= to_char(sysdate-3,'yyyymm')
 group by log_id,flag,msg;
 
 --查看处理情况
-select log_id,state,count(1) 
+select log_id,state,msg,count(1) 
 from JF_login_PURCHASE_MONITORING 
 where month_id= to_char(sysdate-3,'yyyymm')
-group by log_id,state;
+group by log_id,state, msg;
 
 --查看上传情况
-SELECT act_type, COUNT(1)
+SELECT log_id, act_type, COUNT(1)
   FROM up_login_purchase_monitor
- GROUP BY act_type;
+ GROUP BY log_id, act_type;
 ```
 
 
