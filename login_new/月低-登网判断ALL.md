@@ -30,7 +30,7 @@
 
 | 说明 | 名称 | 其它 |
 | :---: | :--- | :---: |
-| 处理脚本 | run_loginpurchase_n.sh | 月低和1号执行 |
+| 处理脚本 | run_loginpurchase_n.sh | 月低和1号执行,20个通道 |
 | 匹配过程 | p_login_purchase_monitor_new |  |
 | 表 | JF_login_PURCHASE_MONITORING |  |
 | 上传表 | up_login_purchase_monitor |  |
@@ -86,7 +86,8 @@ SELECT trunc(zf_start_date, 'mm'), act_type, COUNT(1)
   where log_id='3'
  GROUP BY trunc(zf_start_date, 'mm'), act_type
  order by 1,2;
- 
+
+--
 ```
 
 
