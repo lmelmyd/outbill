@@ -65,6 +65,28 @@ group by log_id,state, msg;
 SELECT log_id, act_type, COUNT(1)
   FROM up_login_purchase_monitor
  GROUP BY log_id, act_type;
+ 
+--填写excel
+SELECT flag_type, CHECK_FLAG, COUNT(1)
+  FROM work_test.hw_rpt_user_int_t
+ WHERE day_id = To_char(SYSDATE, 'yyyymmdd')
+   AND net_type_code = '50'
+ GROUP BY flag_type, CHECK_FLAG
+ ORDER BY 1, 2;
+
+--上传目标数
+SELECT log_id, act_type, COUNT(1)
+  FROM up_login_purchase_monitor
+ GROUP BY log_id, act_type
+ ORDER BY 1, 2;
+
+--76元档数据分布
+SELECT trunc(zf_start_date, 'mm'), act_type, COUNT(1)
+  FROM up_login_purchase_monitor
+  where log_id='3'
+ GROUP BY trunc(zf_start_date, 'mm'), act_type
+ order by 1,2;
+ 
 ```
 
 
