@@ -99,6 +99,7 @@ select flag,count(1) from un_f_user_brand_month group by flag;
 select flag,count(1) from un_f_user_brand_month group by flag;
 --异常需要再执行 2号晚18点后执行
 --无flag=0的执行
+```
 --bss
 UPDATE jf_f_broad_warn_new
    SET update_day = To_char(SYSDATE, 'yyyymm') || '02'
@@ -109,11 +110,11 @@ UPDATE cbss_broad_warn_new
  WHERE update_day = To_char(SYSDATE, 'yyyymm') || '03';
 ```
 生成备份表
-```sql
---BSS
+```
+BSS
 Create Table un_f_user_brand_month_{账期} As 
 select * from un_f_user_brand_month;
---CBSS
+CBSS
 Create Table un_st_f_user_member_warn_{账期} As 
 as select * from un_st_f_user_member_warn;
 ```
