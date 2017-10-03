@@ -36,7 +36,7 @@ from(select 'act1' db,ta.* from uop_act1.jinl_paylog_recvfee@UQRY_SEL_TO_HAACTDB
  WHERE b.parent_area_code = '0076'
    AND a.eparchy_code = b.area_code
 and partition_id = to_number(to_char(add_months(SYSDATE, -1), 'mm')) --4
-and payment_id <> 100014
+and payment_id = 100014
 order by a.eparchy_code;
 ```
 
