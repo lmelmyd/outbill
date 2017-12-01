@@ -43,7 +43,7 @@
 ```sh
 # 数据供后，直接执行shell:
 cd ~/cbssup
-nohup ./run_loginpurchase_n.sh
+nohup ./run_loginpurchase_n.sh &
 ```
 
 2.核查处理结果
