@@ -43,12 +43,20 @@
 ```sh
 # 数据供后，直接执行shell:
 cd ~/cbssup
-nohup ./run_loginpurchase_n.sh.sh
+nohup ./run_loginpurchase_n.sh &
 ```
 
 2.核查处理结果
 
 ```sql
+--华为提供数据情况
+SELECT flag_type, COUNT(1)
+  FROM work_test.hw_rpt_user_int_t
+ WHERE day_id = To_char(SYSDATE, 'yyyymmdd')
+   AND net_type_code = '50'
+ GROUP BY flag_type;
+
+
 --查看匹配情况
 select log_id,flag,msg,count(1) 
 from JF_login_PURCHASE_MONITORING 
